@@ -1,0 +1,16 @@
+.venv/
+build/
+dist/
+*.spec
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+assets/*.ico
+/.vscode/
+*.egg-info/
+env/
+venv/
+Thumbs.db
+desktop.ini
+.DS_Store
