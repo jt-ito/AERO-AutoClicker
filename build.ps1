@@ -16,11 +16,7 @@ if (Test-Path "assets\cursor_icon.svg") {
 # Bundle whole assets folder
 $add = "assets;assets"
 
-# use an .ico for the exe if present
-$iconArg = ""
-if (Test-Path "assets\app.ico") {
-    $iconArg = "--icon assets\\app.ico"
-}
+# use an .ico for the exe if present (PyInstaller will be called with --icon when available)
 
 # Build with PyInstaller. Include the assets folder so the SVG is bundled.
 if (Test-Path "assets\app.ico") {

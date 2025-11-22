@@ -521,7 +521,8 @@ class MainWindow(QWidget):
         from PySide6.QtWidgets import QLineEdit
         self.keyEdit = QLineEdit()
         self.keyEdit.setFixedWidth(180)
-        self.keyEdit.setText("S")
+        # default to Ctrl+Shift+S
+        self.keyEdit.setText("Ctrl+Shift+S")
         self.keyEdit.setReadOnly(True)
         self.recordBtn = QPushButton("Record")
         self.recordBtn.setCheckable(True)
@@ -890,8 +891,8 @@ class MainWindow(QWidget):
             pass
 
         try:
-            # hotkey (stored as single combo string)
-            key = self.settings.value("hot_key", "S")
+            # hotkey (stored as single combo string) — default to Ctrl+Shift+S
+            key = self.settings.value("hot_key", "Ctrl+Shift+S")
             if key:
                 self.keyEdit.setText(str(key))
         except Exception:
