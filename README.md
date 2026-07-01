@@ -1,93 +1,59 @@
-# Autoclicker (Windows)
+<div align="center">
+  <img src="src-tauri/icons/128x128.png" alt="AERO Logo" width="128">
+  
+  # AERO AutoClicker
+  
+  **A blazing fast, modern, and reliable autoclicker built with Rust & Tauri.**
+  
+  [![Release](https://img.shields.io/github/v/release/jt-ito/AERO-AutoClicker?style=for-the-badge)](https://github.com/jt-ito/AERO-AutoClicker/releases)
+  [![Platform](https://img.shields.io/badge/Platform-Windows-blue?style=for-the-badge)]()
+  
+</div>
 
-Small autoclicker with a modern PySide6 UI that targets a specific application window.
+## ✨ Features
 
-Features:
-- Choose a running application window to target
-- Configure click interval (ms) or clicks per second
-- Single or double-click option
-- Start / Stop controls
-- Light and Dark themes (dark default)
+- 🎨 **Modern Interface**: A beautiful glassmorphic UI with full support for Dark and Light modes.
+- 🎯 **Target Specific Windows**: Don't just click blindly! Select an exact target window to interact with.
+- ⌨️ **Global Hotkeys**: Start and stop clicking instantly with a fully customizable global hotkey (works everywhere).
+- 👻 **Background Mode**: Send clicks via `PostMessage` without hijacking your physical mouse, allowing you to use your PC while it clicks in the background!
+- 📍 **Precision Coordinate Picker**: Interactively pick the exact X/Y coordinates on your screen or within a window.
+- 🚀 **Blazing Fast**: Written in pure Rust. Capable of insanely high click speeds while featuring built-in CPU yielding to prevent system freezes.
+- 🖱️ **Double Clicks**: Native double-click toggle support.
 
-Requirements (Windows):
-- Python 3.8+
-- `pip install -r requirements.txt`
+## 🚀 Getting Started
 
-Run locally:
+### Installation
 
-```powershell
-python main.py
+1. Head over to the [Releases page](https://github.com/jt-ito/AERO-AutoClicker/releases).
+2. Download the latest `aero-clicker.exe` file.
+3. Run it and enjoy! No installation required.
+
+### Development
+
+If you want to build AERO from source, you'll need [Node.js](https://nodejs.org/) and [Rust](https://rustup.rs/) installed.
+
+```bash
+# Clone the repository
+git clone https://github.com/jt-ito/AERO-AutoClicker.git
+cd AERO-AutoClicker
+
+# Install dependencies
+npm install
+
+# Run in development mode
+npm run tauri dev
+
+# Build for production
+npm run tauri build
 ```
 
-Notes:
-- This tool uses Windows APIs to post mouse messages to the target window; it is Windows-only.
-- Run with normal user privileges. If the target application has elevated permissions, you may need to run this script as Administrator.
+## 💡 How to use
 
-Build .exe (Windows):
+1. **Select Window**: Use the dropdown to pick the specific application window you want to click on.
+2. **Set Interval**: Choose your clicking speed (in milliseconds).
+3. **Pick Coordinates**: Click the "Pick Coords" button, then click on the target window to set exact X/Y coordinates. Leave as `0, 0` for the center of the window.
+4. **Customize Hotkey**: Click "Record" and press your desired key combination to toggle the clicker.
+5. **Start**: Press your hotkey or click the "Start" button!
 
-Open PowerShell in the project folder and run the helper script:
-
-```powershell
-.\build.ps1
-```
-
-What `build.ps1` does:
-- Creates a virtual environment under `.venv`.
-- Installs packages from `requirements.txt` plus `pyinstaller` and `Pillow`.
-- Converts `assets/cursor_icon.svg` to `assets/app.ico` using `convert_icon_qt.py` (no Cairo runtime required).
-- Runs PyInstaller to produce a single-file, windowed executable in the `dist` folder.
-
-Manual build (if you prefer):
-
-```powershell
-# install requirements and pyinstaller
-python -m pip install -r requirements.txt pyinstaller Pillow
-
-# convert the SVG icon (optional) using the Qt converter included in the repo
-.venv\Scripts\python.exe convert_icon_qt.py
-
-# build with pyinstaller (include the assets folder)
-pyinstaller --onefile --windowed --add-data "assets;assets" --icon assets\app.ico main.py
-```
-
-The produced EXE will be in `dist\` and should contain the app icon. If Explorer still shows a generic Python icon on the desktop, try restarting Explorer or re-creating the shortcut (see project notes).
-# Autoclicker (Windows)
-
-Small autoclicker with a modern PySide6 UI that targets a specific application window.
-
-Features:
-- Choose a running application window to target
-- Configure click interval (ms) or clicks per second
-- Single or double-click option
-- Start / Stop controls
-- Light and Dark themes (dark default)
-
-Requirements (Windows):
-- Python 3.8+
-- `pip install -r requirements.txt`
-
-Run:
-```
-python main.py
-```
-
-Notes:
-- This tool uses Windows APIs to post mouse messages to the target window; it is Windows-only.
-- Run with normal user privileges. If the target application has elevated permissions, you may need to run this script as Administrator.
-
-Build .exe (Windows):
-
-Open PowerShell in the project folder and run:
-
-```powershell
-.\build.ps1
-```
-
-This script creates a virtual environment, installs `requirements.txt` and `pyinstaller`, then builds a single-file Windows executable. The built exe will be in the `dist` folder.
-
-Alternatively, to build manually:
-
-```powershell
-python -m pip install -r requirements.txt pyinstaller
-pyinstaller --onefile --noconsole --add-data "assets\cursor_icon.svg;assets" main.py
-```
+---
+*Built with ❤️ using [Tauri](https://tauri.app/)*

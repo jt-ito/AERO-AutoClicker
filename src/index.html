@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AERO AutoClicker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="main.js" defer></script>
+  </head>
+  <body class="dark-mode">
+    <div class="app-container">
+      <header data-tauri-drag-region>
+        <h1>AERO</h1>
+        <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">
+          <!-- SVG for dark/light toggle will be injected via JS -->
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+        </button>
+      </header>
+      
+      <main>
+        <section class="card">
+          <div class="form-group row">
+            <label for="window-select">Target Window</label>
+            <div class="input-with-btn">
+              <select id="window-select">
+                <option value="" disabled selected>Select a window...</option>
+              </select>
+              <button id="refresh-btn" class="secondary-btn">Refresh</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="row">
+            <div class="form-group half">
+              <label for="interval">Interval (ms)</label>
+              <input type="number" id="interval" value="100" min="1" />
+            </div>
+            <div class="form-group half checkbox-group">
+              <label class="custom-checkbox">
+                <input type="checkbox" id="double-click" />
+                <span class="checkmark"></span>
+                Double-click
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="row coords-row">
+            <div class="form-group coord">
+              <label for="coord-x">X</label>
+              <input type="number" id="coord-x" value="0" />
+            </div>
+            <div class="form-group coord">
+              <label for="coord-y">Y</label>
+              <input type="number" id="coord-y" value="0" />
+            </div>
+            <button id="pick-btn" class="secondary-btn pick-btn">Pick Coords</button>
+          </div>
+          <p class="hint">0, 0 will click the center of the window.</p>
+        </section>
+
+        <section class="card">
+          <div class="row">
+             <div class="form-group hotkey-group">
+                <label>Hotkey</label>
+                <div class="input-with-btn">
+                  <input type="text" id="hotkey-display" value="CommandOrControl+Shift+S" readonly />
+                  <button id="record-btn" class="secondary-btn">Record</button>
+                </div>
+             </div>
+          </div>
+          <div class="form-group checkbox-group bg-mode-group">
+            <label class="custom-checkbox">
+              <input type="checkbox" id="background-mode" />
+              <span class="checkmark"></span>
+              Background Mode (PostMessage)
+            </label>
+          </div>
+        </section>
+      </main>
+
+      <footer class="action-footer">
+        <button id="start-btn" class="primary-btn solid-blue">Start</button>
+        <button id="stop-btn" class="primary-btn solid-red" disabled>Stop</button>
+      </footer>
+    </div>
+  </body>
+</html>
