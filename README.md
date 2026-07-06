@@ -10,50 +10,73 @@
   
 </div>
 
+---
+
+AERO is a next-generation automation toolkit designed for speed, reliability, and ease of use. By combining a lightweight **Rust** backend with a beautiful, modern **Tauri + Vanilla JS/CSS** frontend, AERO delivers uncompromising performance with a premium user experience.
+
+Whether you need a simple rapid-fire autoclicker or a complex, multi-input macro sequence, AERO handles it all natively on Windows without breaking a sweat.
+
 ## ✨ Features
 
-- 🎨 **Modern Interface**: A beautiful glassmorphic UI with full support for Dark and Light modes.
-- 🎯 **Target Specific Windows**: Don't just click blindly! Select an exact target window to interact with.
-- ⌨️ **Global Hotkeys**: Start and stop clicking instantly with a fully customizable global hotkey (works everywhere).
-- 👻 **Background Mode**: Send clicks via `PostMessage` without hijacking your physical mouse, allowing you to use your PC while it clicks in the background!
-- 📍 **Precision Coordinate Picker**: Interactively pick the exact X/Y coordinates on your screen or within a window.
-- 🚀 **Blazing Fast**: Written in pure Rust. Capable of insanely high click speeds while featuring built-in CPU yielding to prevent system freezes.
-- 🖱️ **Double Clicks**: Native double-click toggle support.
+### 🖱️ Advanced AutoClicking
+- **Precision Speed**: Achieve impossibly high Clicks-Per-Second (CPS) with sub-millisecond Rust timing.
+- **Background Mode**: Target specific background windows to click silently without hijacking your active mouse cursor.
+- **Custom Coordinates**: Specify exact X and Y screen coordinates, or use the built-in screen picker.
+- **Double Clicks**: Native double-click simulation support.
+
+### ⌨️ Bulletproof Macro Engine
+- **Hardware-Level Polling**: The macro recorder utilizes a dedicated `GetAsyncKeyState` hardware polling thread, guaranteeing your inputs are recorded perfectly, even in environments with strict anti-cheat software or group policies that block traditional Win32 hooks.
+- **Full Input Capture**: Captures left clicks, right clicks, and **all** keyboard keystrokes natively.
+- **Smart Hotkey Stripping**: Intelligently parses your custom stop-recording hotkey and cleanly strips it out of the final macro sequence so it never accidentally plays back.
+- **Drag-and-Drop Editor**: Easily re-order, tweak, or delete specific actions from your recorded macro sequence directly within the UI.
+
+### 🎨 Premium User Experience
+- **Modern Glassmorphism UI**: Beautifully crafted interface with smooth micro-animations.
+- **Persistent State**: AERO remembers all of your custom hotkeys, delays, coordinates, and theme preferences across sessions automatically.
+- **Light & Dark Mode**: Toggle instantly between sleek dark mode or vibrant light mode.
+- **Built-in 3D Test Environment**: Test your macros and CPS speeds safely inside AERO's built-in pure CSS 3D "Minecraft-style" testing arena—complete with autoclicker detection alerts!
 
 ## 🚀 Getting Started
 
 ### Installation
+Grab the latest release installer from the [Releases](https://github.com/jt-ito/AERO-AutoClicker/releases) page.
+- `AERO_1.2.0_x64-setup.exe` (Recommended NSIS Installer)
+- `AERO_1.2.0_x64_en-US.msi` (Windows Installer)
+- `aero-clicker.exe` (Portable Binary)
 
-1. Head over to the [Releases page](https://github.com/jt-ito/AERO-AutoClicker/releases).
-2. Download the latest `aero-clicker.exe` file.
-3. Run it and enjoy! No installation required.
+### Usage Guide
+1. **Set your Hotkeys**: Click any of the "Set" buttons next to a hotkey display and press your desired shortcut (e.g., `Ctrl+Shift+S`).
+2. **AutoClicker**: Enter your desired interval in milliseconds, pick a target screen coordinate (optional), and press your hotkey to start spamming!
+3. **Macros**: Switch to the Macro tab. Press your Record hotkey to start capturing inputs. Play a game, type a sentence, or navigate a UI. Press the hotkey again to stop. Press your Playback hotkey to watch AERO repeat your actions flawlessly.
 
-### Development
+## 🛠️ Development & Building
 
-If you want to build AERO from source, you'll need [Node.js](https://nodejs.org/) and [Rust](https://rustup.rs/) installed.
+AERO is built on the [Tauri](https://tauri.app/) framework. To build it from source:
 
+### Prerequisites
+- [Node.js](https://nodejs.org/) (v16+)
+- [Rust](https://www.rust-lang.org/tools/install)
+- Windows Build Tools (C++ Build Tools)
+
+### Build Instructions
 ```bash
-# Clone the repository
+# 1. Clone the repository
 git clone https://github.com/jt-ito/AERO-AutoClicker.git
 cd AERO-AutoClicker
 
-# Install dependencies
+# 2. Install dependencies
 npm install
 
-# Run in development mode
+# 3. Run the development server (Hot-reloading)
 npm run tauri dev
 
-# Build for production
+# 4. Build the final release executables
 npm run tauri build
 ```
+*The compiled `.exe` and installers will be located in `src-tauri/target/release/`.*
 
-## 💡 How to use
+## 🤝 Contributing
+Contributions, issues, and feature requests are always welcome! Feel free to check the [issues page](https://github.com/jt-ito/AERO-AutoClicker/issues) if you want to contribute.
 
-1. **Select Window**: Use the dropdown to pick the specific application window you want to click on.
-2. **Set Interval**: Choose your clicking speed (in milliseconds).
-3. **Pick Coordinates**: Click the "Pick Coords" button, then click on the target window to set exact X/Y coordinates. Leave as `0, 0` for the center of the window.
-4. **Customize Hotkey**: Click "Record" and press your desired key combination to toggle the clicker.
-5. **Start**: Press your hotkey or click the "Start" button!
-
----
-*Built with ❤️ using [Tauri](https://tauri.app/)*
+## 📝 License
+This project is open-source and available under the standard MIT License.
